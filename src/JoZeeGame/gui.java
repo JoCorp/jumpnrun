@@ -25,7 +25,7 @@ public class gui extends JPanel implements ActionListener{
 	
 	public gui(){
 		nx = 0;
-		nx2 = 690;
+		nx2 = 1000;
 		
 		key = 0;
 		lauf = 0;
@@ -52,7 +52,8 @@ public class gui extends JPanel implements ActionListener{
 		
 		super.paint(g);
 		Graphics2D f2 = (Graphics2D)g;
-		
+		//4000= Länge des Bildes x 2
+		//länge des Bildes - länge des Fensters
 		if (getXBild() == 1000+(anzahl * 4000)){
 			anzahl += 1;
 			nx = 0;

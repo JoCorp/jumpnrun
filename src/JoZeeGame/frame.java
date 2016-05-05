@@ -71,7 +71,7 @@ public void actionPerformed(ActionEvent e) {
 		Object[] options = { "JoZee"};
 		JOptionPane.showOptionDialog(null, "Programmiert von JoZee!","Information",JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE,null,options,options[0]);
 	}else if(e.getSource()== einstellung){
-		//auswah();
+		//auswahl();
 	}else if(e.getSource()== ende){
 		System.exit(0);
 	}
