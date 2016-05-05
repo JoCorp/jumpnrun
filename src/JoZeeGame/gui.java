@@ -25,7 +25,7 @@ public class gui extends JPanel implements ActionListener {
 
 	public gui() {
 		nx = 0;
-
+		//Größe des Fensters
 		nx2 = 1000;
 
 		key = 0;
