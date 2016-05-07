@@ -12,8 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class gui extends JPanel implements ActionListener {
-
+	
 	Image img;
+	//Charakter
+	//Image img2;
 	int key;
 	int lauf;
 	int X_Bild;
@@ -32,8 +34,16 @@ public class gui extends JPanel implements ActionListener {
 		lauf = 0;
 
 		setFocusable(true);
+		
 		ImageIcon u = new ImageIcon(getClass().getResource("/res/background.jpg"));
+		
 		img = u.getImage();
+		
+		//ImageIcon s = new ImageIcon(getClass().getResource("Bowser_HUGE.png"));
+		
+		//img2 = s.getImage();
+		
+		
 		addKeyListener(new AL());
 
 		time = new Timer(5, this);
@@ -52,7 +62,7 @@ public class gui extends JPanel implements ActionListener {
 
 		Graphics2D f2 = (Graphics2D) g;
 		// 4000= Länge des Bildes x 2
-		// länge des Bildes - länge des Fensters
+		// 1000=länge des Bildes - länge des Fensters
 		if (getXBild() == 1000 + (anzahl * 4000)) {
 
 			anzahl += 1;
