@@ -15,7 +15,7 @@ public class frame extends JFrame implements ActionListener {
 	private JButton ende;
 
 	public static void main(String[] args) {
-
+		
 		frame frame = new frame("Menü");
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setSize(400, 400);
@@ -57,6 +57,7 @@ public class frame extends JFrame implements ActionListener {
 		fenster.setSize/** (1800, 1000) */
 		(1000, 650);
 		fenster.setVisible(true);
+		fenster.setResizable(false);
 		fenster.add(new gui());
 	}
 

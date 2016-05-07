@@ -12,14 +12,18 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class gui extends JPanel implements ActionListener {
-
+	//Welt
 	Image img;
+	//Charakter
+	Image img2;
 	int key;
 	int lauf;
 	int X_Bild;
 	Timer time;
+	//Zur bewegung des Hintergrundbildes notwendig
 	int nx, nx2;
-
+	//Zur Bewegung des Charakters notwendig
+	int left = 0;
 	int anzahl = 0;
 	int anzahl2 = 0;
 
@@ -32,8 +36,16 @@ public class gui extends JPanel implements ActionListener {
 		lauf = 0;
 
 		setFocusable(true);
+		
 		ImageIcon u = new ImageIcon(getClass().getResource("/res/background.jpg"));
+		
 		img = u.getImage();
+		
+		ImageIcon s = new ImageIcon(getClass().getResource("Bowser_On_Skateboard.png"));
+		
+		img2 = s.getImage();
+		
+		
 		addKeyListener(new AL());
 
 		time = new Timer(5, this);
@@ -52,7 +64,7 @@ public class gui extends JPanel implements ActionListener {
 
 		Graphics2D f2 = (Graphics2D) g;
 		// 4000= Länge des Bildes x 2
-		// länge des Bildes - länge des Fensters
+		// 1000=länge des Bildes - länge des Fensters
 		if (getXBild() == 1000 + (anzahl * 4000)) {
 
 			anzahl += 1;
@@ -70,14 +82,30 @@ public class gui extends JPanel implements ActionListener {
 		}
 
 		f2.drawImage(img, 1000 - nx2, 0, null);
+		
+		f2.drawImage(img2, left, 500,100,100, null);
 
-		// f2.drawImage(img, 0, 0, 1708, 800, 0, 0, 3881, 1817, null);
 	}
 
 	public void bewegen() {
-		X_Bild += lauf;
-		nx += lauf;
-		nx2 += lauf;
+		
+		if(lauf != -2){
+			if(left + lauf <= 300){
+				left += lauf;
+			}else {
+				X_Bild += lauf;
+				nx += lauf;
+				nx2 += lauf;
+			}
+		}else{
+			if(left + lauf > 0){
+				left += lauf;
+			}
+			
+		}
+		
+		
+		
 	}
 
 	public int getXBild() {
