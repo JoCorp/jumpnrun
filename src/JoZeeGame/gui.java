@@ -28,7 +28,6 @@ public class gui extends JPanel implements ActionListener {
 	int nx, nx2;
 	//Zur Bewegung des Charakters notwendig
 	int figur_y = 500;
-	Sprung sp;
 	int left = 0;
 	int anzahl = 0;
 	int anzahl2 = 0;
@@ -53,7 +52,7 @@ public class gui extends JPanel implements ActionListener {
 		
 		addKeyListener(new AL());
 		
-		sp = new Sprung();
+		Sprung sp = new Sprung();
 
 		time = new Timer(5, this);
 		time.start();
@@ -61,7 +60,7 @@ public class gui extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		bewegen();
-		figur_y = sp.sprungPosition();
+		figur_y = Sprung.sprungPosition;
 		repaint();
 
 	}
@@ -135,7 +134,8 @@ public class gui extends JPanel implements ActionListener {
 				lauf = 2;
 			} else if (key == KeyEvent.VK_LEFT) {
 				lauf = -2;
-
+			}else if(key ==KeyEvent.VK_SPACE){
+				Sprung();
 			}
 		}
 
@@ -148,5 +148,9 @@ public class gui extends JPanel implements ActionListener {
 			}
 		}
 
+	}
+	public void Sprung(){
+		Sprung SprungAnimation = new Sprung();
+		SprungAnimation.start();
 	}
 }
