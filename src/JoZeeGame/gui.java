@@ -67,13 +67,13 @@ public class gui extends JPanel implements ActionListener {
 		// 1000=länge des Bildes - länge des Fensters
 		if (getXBild() == 1000 + (anzahl * 4000)) {
 
-			anzahl += 1;
+			anzahl++;
 			nx = 0;
 
 		}
 
 		if (getXBild() == 3000 + (anzahl2 * 4000)) {
-			anzahl2 += 1;
+			anzahl2++;
 			nx2 = 0;
 		}
 
@@ -123,9 +123,9 @@ public class gui extends JPanel implements ActionListener {
 
 			key = e.getKeyCode();
 
-			if (key == KeyEvent.VK_LEFT) {
+			if (key == KeyEvent.VK_RIGHT) {
 				lauf = 2;
-			} else if (key == KeyEvent.VK_RIGHT) {
+			} else if (key == KeyEvent.VK_LEFT) {
 				lauf = -2;
 
 			}
