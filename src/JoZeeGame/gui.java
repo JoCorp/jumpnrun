@@ -12,6 +12,10 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class gui extends JPanel implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Welt
 	Image img;
 	//Charakter
@@ -23,6 +27,7 @@ public class gui extends JPanel implements ActionListener {
 	//Zur bewegung des Hintergrundbildes notwendig
 	int nx, nx2;
 	//Zur Bewegung des Charakters notwendig
+	int figur_y = 500;
 	int left = 0;
 	int anzahl = 0;
 	int anzahl2 = 0;
@@ -45,8 +50,9 @@ public class gui extends JPanel implements ActionListener {
 		
 		img2 = s.getImage();
 		
-		
 		addKeyListener(new AL());
+		
+		Sprung sp = new Sprung();
 
 		time = new Timer(5, this);
 		time.start();
@@ -54,6 +60,7 @@ public class gui extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		bewegen();
+		figur_y = Sprung.sprungPosition;
 		repaint();
 
 	}
@@ -83,7 +90,7 @@ public class gui extends JPanel implements ActionListener {
 
 		f2.drawImage(img, 1000 - nx2, 0, null);
 		
-		f2.drawImage(img2, left, 500,100,100, null);
+		f2.drawImage(img2, left, figur_y,100,100, null);
 
 	}
 
@@ -127,7 +134,8 @@ public class gui extends JPanel implements ActionListener {
 				lauf = 2;
 			} else if (key == KeyEvent.VK_LEFT) {
 				lauf = -2;
-
+			}else if(key ==KeyEvent.VK_SPACE){
+				Sprung();
 			}
 		}
 
@@ -140,5 +148,9 @@ public class gui extends JPanel implements ActionListener {
 			}
 		}
 
+	}
+	public void Sprung(){
+		Sprung SprungAnimation = new Sprung();
+		SprungAnimation.start();
 	}
 }
