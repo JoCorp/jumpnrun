@@ -5,7 +5,7 @@ public class Sprung extends Thread{
 	static boolean fertig = true;
 	static boolean hochpunkt = false;
 	
-	int sprunghöhe = 100;
+	int sprunghöhe = 150;
 	static int ursprungY = 500;
 	static int sprungPosition = ursprungY;
 	
