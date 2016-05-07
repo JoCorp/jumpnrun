@@ -5,17 +5,47 @@ public class Sprung extends Thread{
 	static boolean fertig = true;
 	static boolean hochpunkt = false;
 	
-	int sprunghöhe = 200;
-	int ursprungY = 500;
-	int sprungPosition = ursprungY;
+	int sprunghöhe = 100;
+	static int ursprungY = 500;
+	static int sprungPosition = ursprungY;
 	
 	public Sprung(){
 	}
 
-	public int sprungPosition(){
-	
-		return sprungPosition;
-	
+	public void run(){
+		fertig = false;
+		int verzögerung = 20;
+		while(fertig == false){
+			Jump();
+			
+			try{
+				Thread.sleep(verzögerung);
+			}catch(Exception e){
+				
+			}
+			
+		}
+		hochpunkt = false;
+		
 	}
-	
+
+	public void Jump(){
+		if(hochpunkt == false){
+			sprungPosition -= 10;
+		}
+		if(sprungPosition == ursprungY-sprunghöhe){
+			hochpunkt = true;
+		}
+		
+		if(hochpunkt == true && sprungPosition <= ursprungY){
+			sprungPosition += 10;
+			if(sprungPosition == ursprungY){
+				fertig = true;
+			}
+		}
+		
+	}
+
 }
+	
+
