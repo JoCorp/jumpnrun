@@ -134,7 +134,7 @@ public class gui extends JPanel implements ActionListener {
 				lauf = 2;
 			} else if (key == KeyEvent.VK_LEFT) {
 				lauf = -2;
-			}else if(key ==KeyEvent.VK_SPACE){
+			}else if(key ==KeyEvent.VK_UP){
 				Sprung();
 			}
 		}

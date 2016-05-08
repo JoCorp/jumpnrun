@@ -9,13 +9,10 @@ import javax.swing.JOptionPane;
 
 public class frame extends JFrame implements ActionListener {
 
-	private JButton schliessen;
-	private JButton einstellung;
-	private JButton info;
-	private JButton ende;
+	private JButton schliessen, einstellung, info, ende;
 
 	public static void main(String[] args) {
-		
+		//Hauptmenü
 		frame frame = new frame("Menü");
 		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		frame.setSize(400, 400);
@@ -27,7 +24,7 @@ public class frame extends JFrame implements ActionListener {
 	public frame(String title) {
 
 		super(title);
-
+		//startet eigentlich das Spiel
 		schliessen = new JButton("Spiel starten");
 		schliessen.setBounds(120, 40, 160, 40);
 		schliessen.addActionListener(this);
@@ -51,30 +48,35 @@ public class frame extends JFrame implements ActionListener {
 	}
 
 	public static void fenster() {
-
+		
+		//SpielFenster
 		JFrame fenster = new JFrame();
 		fenster.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		fenster.setSize/** (1800, 1000) */
-		(1000, 650);
+		fenster.setSize(1000, 650);
 		fenster.setVisible(true);
 		fenster.setResizable(false);
 		fenster.add(new gui());
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
 		if (e.getSource() == schliessen) {
+			
 			fenster();
-		} else if (e.getSource() == info) {
+		
+		}else if (e.getSource() == info) {
+			
 			Object[] options = { "JoZee" };
 			JOptionPane.showOptionDialog(null, "Programmiert von JoZee!", "Information", JOptionPane.DEFAULT_OPTION,
-					JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+			JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+		
 		} else if (e.getSource() == einstellung) {
+			
 			// auswahl();
-		} else if (e.getSource() == ende) {
+		
+		}else if (e.getSource() == ende) {
+			
 			System.exit(0);
-
 		}
 	}
 }
