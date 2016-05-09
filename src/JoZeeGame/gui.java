@@ -1,5 +1,6 @@
 package JoZeeGame;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -22,6 +23,8 @@ public class gui extends JPanel implements ActionListener {
 	//Zur Bewegung des Charakters notwendig
 	int figur_y = 500;
 	int left, anzahl, anzahl2 = 0;
+	Block block1;
+	int coin_score;
 	public gui() {
 		
 		nx = 0;
@@ -39,6 +42,8 @@ public class gui extends JPanel implements ActionListener {
 		img2 = s.getImage();
 		
 		addKeyListener(new AL());
+		
+		block1 = new Block(250,330,50,50, Color.GREEN);
 		
 		Sprung sp = new Sprung();
 
@@ -81,7 +86,14 @@ public class gui extends JPanel implements ActionListener {
 		
 		f2.drawImage(img, 1000 - nx2, 0, null);
 		f2.drawImage(img2, left, figur_y,100,100, null);
+		f2.setColor(block1.getFarbe());
+		f2.fillRect(block1.getX_Block()-getXBild(),block1.getY_Block(), block1.getWidth(),block1.getHeight());
 
+		block1.Kollisionsabfrage(block1.getX_Block()-getXBild(), block1.getY_Block()+ block1.getHeight(),left +50, figur_y);
+		if(block1.Coin() == true){
+			coin_score = 1;
+		}
+		f2.drawString("Score : " +coin_score,  10, 15);
 	}
 
 	public void bewegen() {
