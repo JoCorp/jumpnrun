@@ -12,26 +12,27 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class gui extends JPanel implements ActionListener {
+public class Gui extends JPanel implements ActionListener {
 	
 	private static final long serialVersionUID = 1L;
-	//Welt und Charakter
+	//World and Character
 	Image img, img2;
-	//Zur bewegung des Hintergrundbildes notwendig
-	int key, lauf, X_Bild, nx, nx2;
+	//Necessary to move the background
+	int key, run, x_picture, nx, nx2;
 	Timer time;
-	//Zur Bewegung des Charakters notwendig
+	//Necessary to move the Character
 	int figur_y = 500;
-	int left, anzahl, anzahl2 = 0;
+	int left, ammount, ammount2 = 0;
+	
 	Block block1;
 	int coin_score;
-	public gui() {
+	public Gui() {
 		
 		nx = 0;
-		//Größe des Fensters
+		//Length of the window = 1000 = nx2
 		nx2 = 1000;
 		key = 0;
-		lauf = 0;
+		run = 0;
 
 		setFocusable(true);
 		
@@ -45,15 +46,14 @@ public class gui extends JPanel implements ActionListener {
 		
 		block1 = new Block(250,330,50,50, Color.GREEN);
 		
-		Sprung sp = new Sprung();
 
 		time = new Timer(5, this);
 		time.start();
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		bewegen();
-		figur_y = Sprung.sprungPosition;
+		move();
+		figur_y = Jump.jumpPosition;
 		repaint();
 
 	}
@@ -63,18 +63,18 @@ public class gui extends JPanel implements ActionListener {
 		super.paint(g);
 
 		Graphics2D f2 = (Graphics2D) g;
-		// 4000= Länge des Bildes x 2
-		// 1000=länge des Bildes - länge des Fensters
-		if (getXBild() == 1000 + (anzahl * 4000)) {
+		// 4000 = Background-length x 2
+		// 1000 = Background length - Length of the window
+		if (getXBild() == 1000 + (ammount * 4000)) {
 
-			anzahl++;
+			ammount++;
 			nx = 0;
 
 		}
 
-		if (getXBild() == 3000 + (anzahl2 * 4000)) {
+		if (getXBild() == 3000 + (ammount2 * 4000)) {
 			
-			anzahl2++;
+			ammount2++;
 			nx2 = 0;
 		}
 
@@ -86,38 +86,38 @@ public class gui extends JPanel implements ActionListener {
 		
 		f2.drawImage(img, 1000 - nx2, 0, null);
 		f2.drawImage(img2, left, figur_y,100,100, null);
-		f2.setColor(block1.getFarbe());
+		f2.setColor(block1.getColor());
 		f2.fillRect(block1.getX_Block()-getXBild(),block1.getY_Block(), block1.getWidth(),block1.getHeight());
 
-		block1.Kollisionsabfrage(block1.getX_Block()-getXBild(), block1.getY_Block()+ block1.getHeight(),left +50, figur_y);
-		if(block1.Coin() == true){
+		block1.collisionDetection(block1.getX_Block()-getXBild(), block1.getY_Block()+ block1.getHeight(),left +50, figur_y);
+		if(block1.getCoin() == true){
 			coin_score = 1;
 		}
 		f2.drawString("Score : " +coin_score,  10, 15);
 	}
 
-	public void bewegen() {
+	public void move() {
 		
-		if(lauf != -2){
+		if(run != -2){
 			
-			if(left + lauf <= 300){
+			if(left + run <= 300){
 				
-				left += lauf;
+				left += run;
 			
 			}else{
 				
-				X_Bild += lauf;
-				nx += lauf;
+				x_picture += run;
+				nx += run;
 				
-				nx2 += lauf;
+				nx2 += run;
 			
 			}
 		
 		}else{
 			
-			if(left + lauf > 0){
+			if(left + run > 0){
 				
-				left += lauf;
+				left += run;
 			
 			}
 			
@@ -128,7 +128,7 @@ public class gui extends JPanel implements ActionListener {
 	}
 
 	public int getXBild() {
-		return X_Bild;
+		return x_picture;
 
 	}
 
@@ -143,11 +143,11 @@ public class gui extends JPanel implements ActionListener {
 			key = e.getKeyCode();
 
 			if (key == KeyEvent.VK_RIGHT) {
-				lauf = 2;
+				run = 2;
 			} else if (key == KeyEvent.VK_LEFT) {
-				lauf = -2;
+				run = -2;
 			}else if(key ==KeyEvent.VK_UP){
-				Sprung();
+				jump();
 			}
 		}
 
@@ -156,13 +156,13 @@ public class gui extends JPanel implements ActionListener {
 			key = e.getKeyCode();
 
 			if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT) {
-				lauf = 0;
+				run = 0;
 			}
 		}
 
 	}
-	public void Sprung(){
-		Sprung SprungAnimation = new Sprung();
-		SprungAnimation.start();
+	public void jump(){
+		Jump jumpAnimation = new Jump();
+		jumpAnimation.start();
 	}
 }
