@@ -39,7 +39,7 @@ public class Gui extends JPanel implements ActionListener {
 		ImageIcon u = new ImageIcon(getClass().getResource("/res/background.jpg"));
 		img = u.getImage();
 		
-		ImageIcon s = new ImageIcon(getClass().getResource("Bowser_On_Skateboard.png"));
+		ImageIcon s = new ImageIcon(getClass().getResource("/res/Bowser_On_Skateboard.png"));
 		img2 = s.getImage();
 		
 		addKeyListener(new AL());
