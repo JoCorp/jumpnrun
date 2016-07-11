@@ -6,7 +6,7 @@ public class Block {
 
 	final int x, y;
 	final int width, height;
-	boolean coin = false;
+	int coin = 1;
 	final Color color;
 	
 	public Block (int p_x, int p_y, int p_width, int p_height, Color p_color){
@@ -21,11 +21,16 @@ public class Block {
 	public boolean collisionDetection (int x_block, int y_block, int x_char, int y_char){
 		if (x_char >= x_block && y_char >= y_block && y_char <= y_block+height){
 			if(x_char <= x_block+width){
-				coin = true;
+				if (coin != 3){
+				coin = 2;
+				}
+				Jump.highPoint = true;
 				return true;
 			}else{
 				if(x_char -822 <= x_block + width){
-					coin = true;
+					if (coin != 3){
+					coin = 2;
+					}
 					return true;
 				}
 			}
@@ -56,7 +61,7 @@ public class Block {
 		return color;
 	}
 	
-	public boolean getCoin(){
+	public int getCoin(){
 		return coin;
 	}
 	}
