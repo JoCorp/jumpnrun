@@ -79,7 +79,6 @@ public class Gui extends JPanel implements ActionListener {
 		}
 
 		if (getXBild() >= 1000) {
-			
 			f2.drawImage(img, 1000 - nx, 0, null);
 		
 		}
@@ -90,8 +89,9 @@ public class Gui extends JPanel implements ActionListener {
 		f2.fillRect(block1.getX_Block()-getXBild(),block1.getY_Block(), block1.getWidth(),block1.getHeight());
 
 		block1.collisionDetection(block1.getX_Block()-getXBild(), block1.getY_Block()+ block1.getHeight(),left +50, figur_y);
-		if(block1.getCoin() == true){
-			coin_score = 1;
+		if(block1.getCoin() == 2){
+			coin_score = coin_score + 1;
+			block1.coin = 3;
 		}
 		f2.drawString("Score : " +coin_score,  10, 15);
 	}
